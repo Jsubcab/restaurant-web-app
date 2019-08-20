@@ -107,7 +107,7 @@ nav h1 a {
 .filter-options {
   width: 100%;
   height: 100%;
-  padding: 15px;
+  padding: 20px 0px 20px;
   background-color: #3397DB;
   align-items: center;
 }
@@ -135,7 +135,8 @@ nav h1 a {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px;
+  width:100%;
+  padding: 5px 0px 0px;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -146,9 +147,9 @@ nav h1 a {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+  margin-top: 15px;
   min-height: 380px;
-  padding: 0 30px 25px;
+  padding: 0 30px 15px;
   text-align: left;
   width: 50%;
 }
@@ -156,9 +157,10 @@ nav h1 a {
   background-color: #ccc;
   display: block;
   margin: 0;
+  margin-top: 20px;
   max-width: 100%;
   min-height: 248px;
-  min-width: 100%;
+  min-width: 50%;
 }
 #restaurants-list li h1 {
   color: #f18200;
@@ -286,12 +288,22 @@ nav h1 a {
 @media (max-width: 459px) {
   .filter-options {
    height: 110px;
- } 
+ }
+ .restaurant-img {
+  height: 100px;
+}
+
  }
 
  @media (max-width: 769px) {
   #restaurant-container, #reviews-container, .inside #footer {
    width: 100%;
+ }
+ #restaurants-list li{
+   width:100%;
+ }
+ .restaurant-img {
+   size:100%;
  }
  .inside #map-container {
      height: 400px;
