@@ -24,10 +24,18 @@ Your project will be evaluated by a Udacity code reviewer according to the [Rest
 3. Explore the provided code, and start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
 4. Write code to implement the updates to get this site on its way to being a mobile-ready website.
 
-## Leaflet.js and Mapbox:
+### How to run it?
 
-This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information.
+1. Download or clone the repository.
+2. Go inside the directory with a terminal and launch a local client server using Python with the following command: 
+      python -m SimpleHTTPServer 8000
+3. Go to your browser and access to the following address: http://localhost:8000
 
-### Note about ES6
+NOTE: Check in your terminal which version do you have of python with: python -V. If not, download python to your computer.
 
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future-proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write.
+### What I did?
+
+1. To make the site responsive with different sizes using media(max-width), responsive sizes, flex, etc.
+2. Give accessibility with tabs, name to the HTML file.
+3. Create ServiceWorker for using the cache to see the page in offline mode. For it I use mostly this following webpage for information: https://css-tricks.com/serviceworker-for-offline/
+
