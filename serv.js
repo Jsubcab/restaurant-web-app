@@ -12,7 +12,6 @@ self.addEventListener('install', function(e) {
 				'./js/dbhelper.js',
 				'./js/main.js',
 				'./js/restaurant_info.js',
-				'./js/sw_registration.js',
 				'./img/1.jpg',
 				'./img/2.jpg',
 				'./img/3.jpg',
@@ -28,27 +27,27 @@ self.addEventListener('install', function(e) {
 	);
 });
 
-self.addEventListener('activate', function(e) {
-	e.waitUntil(
-		caches.keys()
-		.then(function(cacheNames) {
-			return Promise.all(
-				cacheNames.filter(function(cacheName) {
-					return cacheName.startsWith('restaurant-') &&
-						   cacheName != staticCacheName;
-				}).map(function(cacheName) {
-					return caches.delete(cacheName);
-				})
-			);
-		})
-	);
-})
-
 self.addEventListener('fetch', function(e) {
 	e.respondWith(
-		caches.match(event.request)
-		.then(function(answer) {
-			return answer || fetch(e.request);
+		caches.match(e.request).then(function(response) {
+			if (response) {
+				console.log('Found', e.request, ' in cache');
+				return response;
+			}
+			else {
+				console.log('Could not find ', e.request, ' in cache, FETCHING!');
+				return fetch(e.request)
+				.then(function(response) {
+					const clonedResponse = response.clone();
+					caches.open('staticCacheName').then(function(cache) {
+						cache.put(e.request, clonedResponse);
+					})
+					return response;
+				})
+				.catch(function(err) {
+					console.error(err);
+				});
+			}
 		})
 	);
 });
